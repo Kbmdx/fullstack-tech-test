@@ -1,16 +1,16 @@
-import { Header } from "@/components/organisms/TaskIntro";
 import React from "react";
-import { getClient } from "./lib/client";
-import { GET_ALIVE_MORTYS } from "./queries/characters";
+import { getClient } from "../../lib/client";
+import { GET_ALIVE_MORTYS } from "../../queries/characters";
 import { Grid, charactersSchema } from "@/components/organisms/TaskIntro/Grid";
+import { useRouter } from "next/router";
 
-export default async function HomePage() {
+export default async function CharacterPage({ params }: { params: { id: string } }) {
   const { loading, data } = await getClient().query({
     query: GET_ALIVE_MORTYS,
     variables: { page: 1, name: "morty" },
   });
 
-  // TODO: empty state if (!data) { ... }
+// get the one character init params.id
 
   const parsedData = charactersSchema.safeParse(data.characters?.results ?? []);
 
@@ -21,7 +21,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="bg-gray-300"><Header /></div>
       {loading ? <div>loading</div> : <Grid data={parsedData.data} />}
     </>
   );
