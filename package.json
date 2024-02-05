@@ -13,7 +13,8 @@
     "codegen:watch": "graphql-codegen -w"
   },
   "dependencies": {
-    "@apollo/client": "^3.9.2",
+    "@apollo/client": "3.9.0-rc.1",
+    "@apollo/experimental-nextjs-app-support": "^0.8.0",
     "graphql": "^16.8.1",
     "next": "14.0.4",
     "react": "^18",
