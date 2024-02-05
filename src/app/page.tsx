@@ -21,8 +21,12 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="bg-gray-300"><Header /></div>
-      {loading ? <div>loading</div> : <Grid data={parsedData.data} />}
+      <div className="">
+        <Header />
+        <div className="relative z-10 top-[-100px]">
+          {loading ? <div>loading</div> : <Grid data={parsedData.data} />}
+        </div>
+      </div>
     </>
   );
 }
