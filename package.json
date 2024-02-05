@@ -10,11 +10,16 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@apollo/client": "^3.9.2",
+    "graphql": "^16.8.1",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@types/node": "^20",
@@ -27,7 +32,7 @@
     "jsdom": "^23.0.1",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5",
+    "typescript": "^5.3.3",
     "vitest": "^1.0.4"
   },
   "packageManager": "yarn@4.0.2",
