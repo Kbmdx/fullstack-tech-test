@@ -1,11 +1,5 @@
-import { characterSchema } from "@/app/schemas/character";
+import { ParsedCharacter } from "@/app/schemas/character";
 import { GridItem } from "./GridItem";
-import { z } from "zod";
-
-// TODO: move to schemas dir
-export const charactersSchema = z.array(characterSchema);
-// TOOD same as above
-export type ParsedCharacter = z.infer<typeof characterSchema>;
 
 export interface GridProps {
   data: ParsedCharacter[];

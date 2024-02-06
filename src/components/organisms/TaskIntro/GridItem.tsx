@@ -1,6 +1,6 @@
+import { ParsedCharacter } from "@/app/schemas/character";
 import Image from "next/image";
 import Link from "next/link";
-import { ParsedCharacter } from "./Grid";
 
 export interface GridItemProps extends ParsedCharacter {}
 
@@ -13,7 +13,7 @@ export const GridItem = ({ name, species, gender, id, image }: GridItemProps) =>
       <p>Gender: {gender}</p>
       <p>Species: {species}</p>
       </div>
-      <Link href={`/characters/id/${id}`}>
+      <Link href={`/characters/${id}`}>
         <button className="bg-slate-300 w-full">View Profile</button>
       </Link>
     </div>
