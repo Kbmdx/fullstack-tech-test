@@ -1,12 +1,13 @@
 import { Header } from "@/components/organisms/TaskIntro";
 import React from "react";
 import { getClient } from "./lib/client";
-import { GET_ALIVE_MORTYS } from "./queries/characters";
-import { Grid, charactersSchema } from "@/components/organisms/TaskIntro/Grid";
+import { GET_CHARACTERS } from "./queries/characters";
+import { Grid } from "@/components/organisms/TaskIntro/Grid";
+import { charactersSchema } from "./schemas/characters";
 
 export default async function HomePage() {
   const { loading, data } = await getClient().query({
-    query: GET_ALIVE_MORTYS,
+    query: GET_CHARACTERS,
     variables: { page: 1, name: "morty" },
   });
 
