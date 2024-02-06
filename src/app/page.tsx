@@ -1,4 +1,3 @@
-import { Header } from "@/components/organisms/TaskIntro";
 import React from "react";
 import { getClient } from "./lib/client";
 import { GET_CHARACTERS } from "./queries/characters";
