@@ -14,7 +14,7 @@ export default async function CharacterPage({
     query: GET_CHARACTER,
     variables: { id: params.id },
   });
-
+  
 
   const parsedData = characterDetailsSchema.safeParse(data.character ?? []);
   if (!parsedData.success) {
@@ -27,48 +27,62 @@ export default async function CharacterPage({
   return (
     <>
       <div>
-      <Link  className="flex relative top-[-150px]" href={`/`}>
-        <button>Back to character listing</button>
-      </Link>
-        <div className="flex relative item-center justify-start top-[-150px]">
-          <Image
-            className="rounded-full"
-            src={parsedData.data.image}
-            height={250}
-            width={250}
-            alt="Character image"
-          />
-          <div className="flex flex-col justify-center">
-            <h1 className="text-5xl font-semibold">{parsedData.data.name}</h1>
-            <p>Status: {parsedData.data.status}</p>
-            <p>Origin:{parsedData.data.origin.name}</p>
+        <div className="bg-gray-300 bg-fixed w-full h-80">
+          <div className="container mx-auto relative">
+            <h1 className="text-2xl">RICK AND MORTY</h1>
+            <Link className="flex relative" href={`/`}>
+              <button>Back to character listing</button>
+            </Link>
+            <div
+              className="flex relative item-center md:top-[
+              90px] justify-start"
+            >
+              <Image
+                className="rounded-full"
+                src={parsedData.data.image}
+                height={250}
+                width={250}
+                alt="Character image"
+              />
+            </div>
+            <div className="container mx-auto flex flex-col justify-center md:flex-row md:align-center">
+              <div className=" ">
+                <h1 className="text-5xl font-semibold">
+                  {parsedData.data.name}
+                </h1>
+                <p>Status: {parsedData.data.status}</p>
+                <p>Origin:{parsedData.data.origin.name}</p>
+              </div>
+            </div>
+            <div className="pb-6 md:justify-start container mx-auto">
+              <h1 className="text-3xl font-semibold">Location data</h1>
+              <div className="flex justify-between flex-col pb-6">
+                <p>Name:{parsedData.data.location.name}</p>
+                <p>Type:{parsedData.data.location.type}</p>
+                <p>
+                  Dimension: {parsedData.data.origin.dimension ?? "Unknown"}
+                </p>
+                <p>Residents:{parsedData.data.location.residents.length}</p>
+              </div>
+            </div>
+            <div className="pb-6">
+              <h1 className="text-3xl font-semibold">Episodes</h1>
+              <p>First appearance: {episodeArray[0].name}, </p>
+              <p>First air date: {episodeArray[0].air_date}</p>
+              <p>
+                First appearance character count:
+                {parsedData.data.episode[0].characters?.length}
+              </p>
+              <p>Last appearance: {lastEpisode.name} </p>
+              <p>Last air date: {lastEpisode.air_date}</p>
+              <p>
+                First appearance character count:{" "}
+                {lastEpisode.characters?.length}
+              </p>
+            </div>
           </div>
         </div>
-        <div className="pb-6 md:justify-start justify-center">
-          <h1 className="text-3xl font-semibold">Location data</h1>
-          <div className="flex justify-between flex-col pb-6">
-            <p>Name:{parsedData.data.location.name}</p>
-            <p>Type:{parsedData.data.location.type}</p>
-            <p>Dimension: {parsedData.data.origin.dimension ?? "Unknown"}</p>
-            <p>Residents:{parsedData.data.location.residents.length}</p>
-          </div>
-          </div>
-          <div className="pb-6">
-            <h1 className="text-3xl font-semibold">Episodes</h1>
-            <p>First appearance: {episodeArray[0].name}, </p>
-            <p>First air date: {episodeArray[0].air_date}</p>
-            <p>
-              First appearance character count:
-              {parsedData.data.episode[0].characters?.length}
-            </p>
-            <p>Last appearance: {lastEpisode.name} </p>
-            <p>Last air date: {lastEpisode.air_date}</p>
-            <p>
-              First appearance character count: {lastEpisode.characters?.length}
-            </p>
-          </div>
-        </div>
-      
+      </div>
     </>
   );
 }
