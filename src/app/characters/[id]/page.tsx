@@ -27,7 +27,7 @@ export default async function CharacterPage({
   return (
     <>
       <div>
-      <Link  className="flex relative top-[-150px]" href={`./home`}>
+      <Link  className="flex relative top-[-150px]" href={`/`}>
         <button>Back to character listing</button>
       </Link>
         <div className="flex relative item-center justify-start top-[-150px]">
