@@ -22,12 +22,14 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="">
-
-        <div className="relative z-10 top-[-100px]">
-          {loading ? <div>loading</div> : <Grid data={parsedData.data} />}
+      <div className="bg-gray-300 w-full h-80 z-1">
+        <h1 className="text-8xl p-10 text-center">RICK AND MORTY</h1>
         </div>
-      </div>
+        <div className="container mx-auto relative md:top-[-90px]">
+        {loading ? <div>loading</div> : <Grid data={parsedData.data} />}
+        </div>
+        
+      
     </>
   );
 }
