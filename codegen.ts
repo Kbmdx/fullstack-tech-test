@@ -1,7 +1,11 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
+if (!process.env.API_URL) {
+  throw new Error("API_URL not set");
+}
+
 const config: CodegenConfig = {
-  schema: "https://rickandmortyapi.com/graphql",
+  schema: process.env.API_URL,
   documents: ["src/**/*.{ts,tsx}"],
   generates: {
     "./src/__generated__/": {
