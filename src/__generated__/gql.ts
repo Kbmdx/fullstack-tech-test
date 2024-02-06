@@ -13,7 +13,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\nquery Characters($page: Int!, $name: String!){\n    characters(page: $page, filter: { name: $name }) {\n        info {\n          count\n        }\n        results {\n          id\n          name\n          gender\n          species\n          image\n        }\n    }\n}\n": types.CharactersDocument,
+    "\nquery Character($id: ID!) {\n    character(id: $id) {\n      name\n      id\n      gender\n      status\n      species\n      image\n      location {\n        name\n        dimension\n        type\n        residents {\n          id\n        }\n      }\n      origin {\n        name\n        dimension\n      }\n      episode {\n        name\n        episode\n        air_date\n        characters{\n          id\n        }\n      }\n    }\n  }\n": types.CharacterDocument,
+    "\nquery Characters($page: Int!, $name: String!) {\n    characters(page: $page, filter: { name: $name }) {\n        info {\n          count\n        }\n        results {\n          id\n          name\n          gender\n          species\n          image\n        }\n    }\n}\n": types.CharactersDocument,
 };
 
 /**
@@ -33,7 +34,11 @@ export function gql(source: string): unknown;
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\nquery Characters($page: Int!, $name: String!){\n    characters(page: $page, filter: { name: $name }) {\n        info {\n          count\n        }\n        results {\n          id\n          name\n          gender\n          species\n          image\n        }\n    }\n}\n"): (typeof documents)["\nquery Characters($page: Int!, $name: String!){\n    characters(page: $page, filter: { name: $name }) {\n        info {\n          count\n        }\n        results {\n          id\n          name\n          gender\n          species\n          image\n        }\n    }\n}\n"];
+export function gql(source: "\nquery Character($id: ID!) {\n    character(id: $id) {\n      name\n      id\n      gender\n      status\n      species\n      image\n      location {\n        name\n        dimension\n        type\n        residents {\n          id\n        }\n      }\n      origin {\n        name\n        dimension\n      }\n      episode {\n        name\n        episode\n        air_date\n        characters{\n          id\n        }\n      }\n    }\n  }\n"): (typeof documents)["\nquery Character($id: ID!) {\n    character(id: $id) {\n      name\n      id\n      gender\n      status\n      species\n      image\n      location {\n        name\n        dimension\n        type\n        residents {\n          id\n        }\n      }\n      origin {\n        name\n        dimension\n      }\n      episode {\n        name\n        episode\n        air_date\n        characters{\n          id\n        }\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\nquery Characters($page: Int!, $name: String!) {\n    characters(page: $page, filter: { name: $name }) {\n        info {\n          count\n        }\n        results {\n          id\n          name\n          gender\n          species\n          image\n        }\n    }\n}\n"): (typeof documents)["\nquery Characters($page: Int!, $name: String!) {\n    characters(page: $page, filter: { name: $name }) {\n        info {\n          count\n        }\n        results {\n          id\n          name\n          gender\n          species\n          image\n        }\n    }\n}\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};
